@@ -1,0 +1,12 @@
+USE Clinic
+
+CREATE TABLE IF NOT EXISTS `Users` (
+	`autoid` INT NOT NULL AUTO_INCREMENT,
+	`email` NVARCHAR(100) NOT NULL,
+	`password` NVARCHAR(256) NOT NULL,
+	`name` NVARCHAR(200) NOT NULL,
+	`phone` VARCHAR(20) NOT NULL,
+	`address` NVARCHAR(300) NOT NULL,	
+	`create_time` DATETIME NOT NULL,
+    PRIMARY KEY (`autoid`)
+);
