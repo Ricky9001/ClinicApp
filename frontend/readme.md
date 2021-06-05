@@ -1,6 +1,4 @@
-# Clinic App (Frontend)
-MediConcen code test
-Applicant: Chan Cheuk Fung (Max)
+# Agency App (Frontend)
 
 ## Run project for first time:
 please add a .env file in the root of the project.\
@@ -11,7 +9,7 @@ then run
 npm install
 ```
 
-to run the project, pleasce run 
+to run the project, please run 
 ```
 npm start
 ```

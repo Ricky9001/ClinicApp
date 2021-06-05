@@ -1,6 +1,4 @@
-# Clinic App 
-MediConcen code test \
-Applicant: Chan Cheuk Fung (Max) 
+# Agency App 
 
 
 ## Information
@@ -12,5 +10,5 @@ Please follow the order of the scripts to run on the database.
 ```
 1_Create DataBase and dbuser.sql
 2_Create Table - Users.sql
-3_Create Table - ConRecord.sql
+3_Create Table - Interview.sql
 ```

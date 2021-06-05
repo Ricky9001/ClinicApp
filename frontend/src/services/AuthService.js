@@ -31,6 +31,8 @@ const AuthService = {
     Register: async (data) => {
         let url = `${api_url}/api/users/register`
         let rtnjson = {}
+        console.log(data);
+        console.log(url);
         await fetch(url, {
             method: "POST",
             body: JSON.stringify({...data}),
@@ -42,7 +44,7 @@ const AuthService = {
         .then(json => rtnjson = json)
         .catch(err => {
             alert('Error on http request'); 
-            console.log('Error on fetch Register')
+            console.log('Error On fetch Register')
             console.log(err)
         })
         // console.log(rtnjson)

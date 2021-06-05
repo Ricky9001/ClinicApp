@@ -1,6 +1,4 @@
-# Clinic App (Backend)
-MediConcen code test\
-Applicant: Chan Cheuk Fung (Max)\
+# Agency App (Backend)
 
 ## Run project for first time:
 please add a .env file in the root of the project.\

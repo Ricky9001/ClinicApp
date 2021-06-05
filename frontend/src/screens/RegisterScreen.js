@@ -38,7 +38,7 @@ export default function RegisterScreen({ navigation }) {
             setwarning("Confirm Password is not the same!")
         }
         else if (!name) {
-            setwarning("Clinic Name is empty!");
+            setwarning("Agency Name is empty!");
         }
         else if (!phone) {
             setwarning("Phone Number is empty!");
@@ -85,7 +85,7 @@ export default function RegisterScreen({ navigation }) {
                     <Input placeholder="Password" value={conPassword} onChangeText={(txt) => setconPassword(txt)} secureTextEntry={true} />
                 </Item>
                 <Item style={styles.LoginItem} floatingLabel>
-                    <Label style={styles.ItemTxt}> Clinic Name </Label>
+                    <Label style={styles.ItemTxt}> Agent Name </Label>
                     <Input placeholder="Name" value={name} onChangeText={(txt) => setname(txt)} />
                 </Item>
                 <Item style={styles.LoginItem} floatingLabel>

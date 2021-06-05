@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import { Container, Form, Header, Input, Title, Item, Button, Label, Card, CardItem } from 'native-base';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
-import ConRecordCard from '../components/ConRecordCard';
+import InterviewCard from '../components/InterviewCard';
 import DateTimeHelper from '../helper/DateTimeHelper';
-import ConRecordService from '../services/ConRecordService';
+import InterviewService from '../services/InterviewService';
 
 export default function MonthlyScreen({ navigation }) {
 
@@ -15,11 +15,11 @@ export default function MonthlyScreen({ navigation }) {
     const onSelectDay = (day, Records) => {
         // setSelectedDay(day)
         // console.log(`selected day = `, day)        
-        var jsdate = new Date(day.timestamp)
+        var intdate = new Date(day.timestamp)
         // console.log(Records)
         var _CardDetails = Records.filter(item => {
-            var con_jsdate = new Date(item.con_datetime)
-            return (DateTimeHelper.formatCalendarDate(jsdate) == DateTimeHelper.formatCalendarDate(con_jsdate)) ? true : false
+            var interviewdate = new Date(item.interview_date)
+            return (DateTimeHelper.formatCalendarDate(intdate) == DateTimeHelper.formatCalendarDate(interviewdate)) ? true : false
         })
         // console.log('_CardDetails',_CardDetails);
         setCardDetails(_CardDetails)
@@ -52,7 +52,7 @@ export default function MonthlyScreen({ navigation }) {
         // console.log('renderMarkedDate', data)
         data.forEach(item => {
 
-            var date = new Date(item.con_datetime)
+            var date = new Date(item.interview_date)
             markedDates[DateTimeHelper.formatCalendarDate(date)] = { marked: true }
         });
         setMarkedDates(markedDates)
@@ -61,7 +61,7 @@ export default function MonthlyScreen({ navigation }) {
     const getMonthlyRecord = async (Month) => {
         if (Month != null) {
             let data = DateTimeHelper.FormatMonthToStartEndDateSQL(Month)
-            const result = await ConRecordService.GetRecordsInRange(data)
+            const result = await InterviewService.GetRecordsInRange(data)
             if (result.success) {
                 setRecords(result.data)
                 onSelectDay(Month, result.data)
@@ -84,7 +84,7 @@ export default function MonthlyScreen({ navigation }) {
                 onDayPress={(day) => onSelectDay(day, Records)}
                 onMonthChange={(month) => getMonthlyRecord(month)} />
             {
-                CardDetails.map((detail, index) => <ConRecordCard key={index} detail={detail} />)
+                CardDetails.map((detail, index) => <InterviewCard key={index} detail={detail} />)
             }
 
         </ScrollView>

@@ -3,8 +3,8 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Container, Form, Header, Input, Title, Item, Button } from 'native-base';
 
 import DateTimeHelper from '../helper/DateTimeHelper';
-import ConRecordCard from '../components/ConRecordCard';
-import ConRecordService from '../services/ConRecordService';
+import InterviewCard from '../components/InterviewCard';
+import InterviewService from '../services/InterviewService';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default function DailyRecord({ navigation }) {
@@ -41,7 +41,7 @@ export default function DailyRecord({ navigation }) {
         data.startdatesql = DateTimeHelper.ParseDateTimeToSQL(_startdate, _startdate)
         data.enddatesql = DateTimeHelper.ParseDateTimeToSQL(_enddate, _enddate)
         // console.log(data)
-        const result = await ConRecordService.GetRecordsInRange(data)
+        const result = await InterviewService.GetRecordsInRange(data)
 
         if (result.success) {
             // console.log(result)
@@ -67,9 +67,9 @@ export default function DailyRecord({ navigation }) {
                 <ScrollView style={styles.ScrollContainer}>
                 {
                     Records.filter(item => {
-                        var con_jsdate = new Date(item.con_datetime)
-                        return (DateTimeHelper.formatCalendarDate(con_jsdate) == DateTimeHelper.formatCalendarDate(currDate)) ? true : false
-                    }).map((detail, index) => <ConRecordCard key={index} detail={detail} />)
+                        var interviewdate = new Date(item.interview_date)
+                        return (DateTimeHelper.formatCalendarDate(interviewdate) == DateTimeHelper.formatCalendarDate(currDate)) ? true : false
+                    }).map((detail, index) => <InterviewCard key={index} detail={detail} />)
                 }
                 </ScrollView>
         </View>

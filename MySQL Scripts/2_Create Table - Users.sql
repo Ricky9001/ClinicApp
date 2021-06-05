@@ -1,4 +1,4 @@
-USE Clinic
+USE Agency;
 
 CREATE TABLE IF NOT EXISTS `Users` (
 	`autoid` INT NOT NULL AUTO_INCREMENT,

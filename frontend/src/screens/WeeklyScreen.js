@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import { Container, Form, Header, Input, Title, Item, Button, Label, Body } from 'native-base';
 import DateTimeHelper from '../helper/DateTimeHelper'
-import ConRecordCard from '../components/ConRecordCard';
-import ConRecordService from '../services/ConRecordService';
+import InterviewCard from '../components/InterviewCard';
+import InterviewService from '../services/InterviewService';
 
 const fisrtDateRange = DateTimeHelper.FindWeekStartEndDate(new Date())
 
@@ -54,7 +54,7 @@ export default function WeeklyScreen({navigation}) {
         data.startdatesql = DateTimeHelper.ParseDateTimeToSQL(_startdate, _startdate)
         data.enddatesql = DateTimeHelper.ParseDateTimeToSQL(_enddate, _enddate)
 
-        const result = await ConRecordService.GetRecordsInRange(data)
+        const result = await InterviewService.GetRecordsInRange(data)
 
         if (result.success) {
             setRecords(result.data)
@@ -83,9 +83,9 @@ export default function WeeklyScreen({navigation}) {
                                 <Text style={{ flex: 1 }}> {DateTimeHelper.formatDateTime(date, 'date')}</Text>
                                 <Body style={{ flex: 2 }}>
                                     {Records.filter(item => {
-                                        var con_jsdate = new Date(item.con_datetime)
-                                        return (DateTimeHelper.formatCalendarDate(con_jsdate) == DateTimeHelper.formatCalendarDate(date)) ? true : false
-                                    }).map((detail, index) => <ConRecordCard key={index} detail={detail} />)}
+                                        var interviewdate = new Date(item.interview_date)
+                                        return (DateTimeHelper.formatCalendarDate(interviewdate) == DateTimeHelper.formatCalendarDate(date)) ? true : false
+                                    }).map((detail, index) => <InterviewCard key={index} detail={detail} />)}
                                 </Body>
                             </Item>
                         )
